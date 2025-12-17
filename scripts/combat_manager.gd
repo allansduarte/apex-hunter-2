@@ -41,6 +41,11 @@ func auto_attack():
 	
 	# Enemy attacks
 	await get_tree().create_timer(0.5).timeout
+	
+	# Check if combat is still active after the delay
+	if not is_combat_active or current_enemy == null or not current_enemy.is_alive():
+		return
+	
 	var enemy_damage = current_enemy.attack
 	GameManager.take_damage(enemy_damage)
 	add_to_log(current_enemy.enemy_name + " causou " + str(enemy_damage) + " de dano!")

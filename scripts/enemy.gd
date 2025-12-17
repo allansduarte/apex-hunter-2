@@ -73,9 +73,10 @@ static func create_goblin_king() -> Enemy:
 	var king = Enemy.new("Rei Goblin", 150, 20, 15, 10)
 	king.coin_drop_min = 50
 	king.coin_drop_max = 100
+	# Intentional: Boss always drops copper (1.0 = 100% chance) as guaranteed reward
 	king.item_drops = {
-		"copper": 1.0,
-		"tin": 0.8,
-		"bronze": 0.3
+		"copper": 1.0,  # Guaranteed drop
+		"tin": 0.8,     # 80% chance
+		"bronze": 0.3   # 30% chance (rare)
 	}
 	return king

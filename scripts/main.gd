@@ -53,22 +53,15 @@ var combat_timer: Timer = null
 var current_combat_enemy: Enemy = null
 
 func _ready():
-	# Initialize singletons as autoloads
-	if not has_node("/root/GameManager"):
-		var game_manager = load("res://scripts/game_manager.gd").new()
-		game_manager.name = "GameManager"
-		get_tree().root.add_child(game_manager)
-	
-	if not has_node("/root/CombatManager"):
-		var combat_manager = load("res://scripts/combat_manager.gd").new()
-		combat_manager.name = "CombatManager"
-		get_tree().root.add_child(combat_manager)
-	
 	# Connect signals
 	GameManager.stats_updated.connect(_on_stats_updated)
 	GameManager.inventory_updated.connect(_on_inventory_updated)
 	GameManager.rank_updated.connect(_on_rank_updated)
 	GameManager.milestone_completed.connect(_on_milestone_completed)
+
+func _exit_tree():
+	# Clean up combat timer on scene exit
+	cleanup_combat_timer()
 	
 	CombatManager.combat_started.connect(_on_combat_started)
 	CombatManager.combat_ended.connect(_on_combat_ended)
@@ -252,10 +245,13 @@ func _on_combat_timer_timeout():
 		update_combat_ui()
 		update_stats_ui()
 	else:
-		if combat_timer:
-			combat_timer.stop()
-			combat_timer.queue_free()
-			combat_timer = null
+		cleanup_combat_timer()
+
+func cleanup_combat_timer():
+	if combat_timer != null:
+		combat_timer.stop()
+		combat_timer.queue_free()
+		combat_timer = null
 
 # Dungeon handlers
 func _on_dungeon_button_pressed():

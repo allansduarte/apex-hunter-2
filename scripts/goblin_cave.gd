@@ -27,6 +27,10 @@ func _ready():
 	
 	rewards_panel.visible = false
 
+func _exit_tree():
+	# Clean up combat timer on scene exit
+	cleanup_combat_timer()
+
 func _on_start_button_pressed():
 	if not dungeon_active:
 		start_dungeon()
@@ -82,10 +86,7 @@ func _on_enemy_defeated():
 	update_dungeon_ui()
 
 func _on_combat_ended():
-	if combat_timer:
-		combat_timer.stop()
-		combat_timer.queue_free()
-		combat_timer = null
+	cleanup_combat_timer()
 	
 	if dungeon_active:
 		await get_tree().create_timer(1.5).timeout
@@ -132,5 +133,12 @@ func _on_combat_log_updated():
 func add_to_log(message: String):
 	CombatManager.add_to_log(message)
 
+func cleanup_combat_timer():
+	if combat_timer != null:
+		combat_timer.stop()
+		combat_timer.queue_free()
+		combat_timer = null
+
 func _on_return_button_pressed():
+	cleanup_combat_timer()
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
