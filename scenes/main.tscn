@@ -1,0 +1,399 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0qf4wl8usvp3"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_j5xm3"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j5xm3")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2, 0.2, 0.25, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopBar" type="PanelContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/TopBar"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TopBar/MarginContainer"]
+layout_mode = 2
+
+[node name="StatsLeft" type="VBoxContainer" parent="VBoxContainer/TopBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HPLabel" type="Label" parent="VBoxContainer/TopBar/MarginContainer/HBoxContainer/StatsLeft"]
+layout_mode = 2
+text = "HP: 100/100"
+
+[node name="HPBar" type="ProgressBar" parent="VBoxContainer/TopBar/MarginContainer/HBoxContainer/StatsLeft"]
+layout_mode = 2
+value = 100.0
+show_percentage = false
+
+[node name="StatsCenter" type="VBoxContainer" parent="VBoxContainer/TopBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InfoLabel" type="Label" parent="VBoxContainer/TopBar/MarginContainer/HBoxContainer/StatsCenter"]
+layout_mode = 2
+horizontal_alignment = 1
+text = "Nível 1 | Rank G | Reputação: 0"
+
+[node name="CoinsLabel" type="Label" parent="VBoxContainer/TopBar/MarginContainer/HBoxContainer/StatsCenter"]
+layout_mode = 2
+horizontal_alignment = 1
+text = "Moedas: 0"
+
+[node name="StatsRight" type="VBoxContainer" parent="VBoxContainer/TopBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="XPLabel" type="Label" parent="VBoxContainer/TopBar/MarginContainer/HBoxContainer/StatsRight"]
+layout_mode = 2
+horizontal_alignment = 2
+text = "XP: 0/100"
+
+[node name="XPBar" type="ProgressBar" parent="VBoxContainer/TopBar/MarginContainer/HBoxContainer/StatsRight"]
+layout_mode = 2
+value = 0.0
+show_percentage = false
+
+[node name="MasteryLabel" type="Label" parent="VBoxContainer/TopBar/MarginContainer/HBoxContainer/StatsRight"]
+layout_mode = 2
+horizontal_alignment = 2
+text = "Maestria: 0/100"
+
+[node name="MasteryBar" type="ProgressBar" parent="VBoxContainer/TopBar/MarginContainer/HBoxContainer/StatsRight"]
+layout_mode = 2
+value = 0.0
+show_percentage = false
+
+[node name="TabContainer" type="TabContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Coleta" type="MarginContainer" parent="VBoxContainer/TabContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="CollectionPanel" type="VBoxContainer" parent="VBoxContainer/TabContainer/Coleta"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="VBoxContainer/TabContainer/Coleta/CollectionPanel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Área: Colinas de Cobre"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/TabContainer/Coleta/CollectionPanel"]
+layout_mode = 2
+
+[node name="ResourceInfo" type="Label" parent="VBoxContainer/TabContainer/Coleta/CollectionPanel"]
+layout_mode = 2
+text = "Cobre coletado: 0"
+
+[node name="MineButton" type="Button" parent="VBoxContainer/TabContainer/Coleta/CollectionPanel"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Minerar Cobre (3s)"
+
+[node name="MiningProgress" type="ProgressBar" parent="VBoxContainer/TabContainer/Coleta/CollectionPanel"]
+layout_mode = 2
+max_value = 3.0
+show_percentage = false
+
+[node name="StatusLabel" type="Label" parent="VBoxContainer/TabContainer/Coleta/CollectionPanel"]
+layout_mode = 2
+text = "Pronto para minerar"
+
+[node name="Criação" type="MarginContainer" parent="VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="CraftingPanel" type="VBoxContainer" parent="VBoxContainer/TabContainer/Criação"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="VBoxContainer/TabContainer/Criação/CraftingPanel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Ferraria"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/TabContainer/Criação/CraftingPanel"]
+layout_mode = 2
+
+[node name="RecipesList" type="VBoxContainer" parent="VBoxContainer/TabContainer/Criação/CraftingPanel"]
+layout_mode = 2
+
+[node name="BronzePickaxe" type="PanelContainer" parent="VBoxContainer/TabContainer/Criação/CraftingPanel/RecipesList"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TabContainer/Criação/CraftingPanel/RecipesList/BronzePickaxe"]
+layout_mode = 2
+
+[node name="InfoContainer" type="VBoxContainer" parent="VBoxContainer/TabContainer/Criação/CraftingPanel/RecipesList/BronzePickaxe/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ItemName" type="Label" parent="VBoxContainer/TabContainer/Criação/CraftingPanel/RecipesList/BronzePickaxe/HBoxContainer/InfoContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Picareta de Bronze"
+
+[node name="Requirements" type="Label" parent="VBoxContainer/TabContainer/Criação/CraftingPanel/RecipesList/BronzePickaxe/HBoxContainer/InfoContainer"]
+layout_mode = 2
+text = "Requer: 10x Cobre"
+
+[node name="CraftButton" type="Button" parent="VBoxContainer/TabContainer/Criação/CraftingPanel/RecipesList/BronzePickaxe/HBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Criar"
+
+[node name="Combate" type="MarginContainer" parent="VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="CombatPanel" type="VBoxContainer" parent="VBoxContainer/TabContainer/Combate"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="VBoxContainer/TabContainer/Combate/CombatPanel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Área de Combate: Campos dos Goblins"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/TabContainer/Combate/CombatPanel"]
+layout_mode = 2
+
+[node name="EnemyInfo" type="PanelContainer" parent="VBoxContainer/TabContainer/Combate/CombatPanel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/TabContainer/Combate/CombatPanel/EnemyInfo"]
+layout_mode = 2
+
+[node name="EnemyName" type="Label" parent="VBoxContainer/TabContainer/Combate/CombatPanel/EnemyInfo/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Nenhum inimigo"
+
+[node name="EnemyHP" type="Label" parent="VBoxContainer/TabContainer/Combate/CombatPanel/EnemyInfo/VBoxContainer"]
+layout_mode = 2
+text = "HP: 0/0"
+
+[node name="EnemyHPBar" type="ProgressBar" parent="VBoxContainer/TabContainer/Combate/CombatPanel/EnemyInfo/VBoxContainer"]
+layout_mode = 2
+show_percentage = false
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="VBoxContainer/TabContainer/Combate/CombatPanel"]
+layout_mode = 2
+
+[node name="FightScoutButton" type="Button" parent="VBoxContainer/TabContainer/Combate/CombatPanel/ButtonsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Lutar: Goblin Batedor"
+
+[node name="FightBruteButton" type="Button" parent="VBoxContainer/TabContainer/Combate/CombatPanel/ButtonsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Lutar: Goblin Brutamontes"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/TabContainer/Combate/CombatPanel"]
+layout_mode = 2
+
+[node name="DungeonSection" type="VBoxContainer" parent="VBoxContainer/TabContainer/Combate/CombatPanel"]
+layout_mode = 2
+
+[node name="DungeonTitle" type="Label" parent="VBoxContainer/TabContainer/Combate/CombatPanel/DungeonSection"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "🏰 Dungeons"
+
+[node name="DungeonLockedLabel" type="Label" parent="VBoxContainer/TabContainer/Combate/CombatPanel/DungeonSection"]
+layout_mode = 2
+text = "🔒 Desbloqueie ao alcançar Rank G+"
+
+[node name="DungeonButton" type="Button" parent="VBoxContainer/TabContainer/Combate/CombatPanel/DungeonSection"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Entrar: Caverna dos Goblins"
+
+[node name="CombatLog" type="PanelContainer" parent="VBoxContainer/TabContainer/Combate/CombatPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/TabContainer/Combate/CombatPanel/CombatLog"]
+layout_mode = 2
+
+[node name="LogLabel" type="Label" parent="VBoxContainer/TabContainer/Combate/CombatPanel/CombatLog/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Log de Combate..."
+autowrap_mode = 3
+
+[node name="Loja" type="MarginContainer" parent="VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ShopPanel" type="VBoxContainer" parent="VBoxContainer/TabContainer/Loja"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="VBoxContainer/TabContainer/Loja/ShopPanel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Loja"
+
+[node name="LockedLabel" type="Label" parent="VBoxContainer/TabContainer/Loja/ShopPanel"]
+layout_mode = 2
+text = "🔒 Desbloqueie ao alcançar Rank G+"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/TabContainer/Loja/ShopPanel"]
+layout_mode = 2
+
+[node name="ItemsList" type="VBoxContainer" parent="VBoxContainer/TabContainer/Loja/ShopPanel"]
+layout_mode = 2
+
+[node name="CopperPickaxeItem" type="PanelContainer" parent="VBoxContainer/TabContainer/Loja/ShopPanel/ItemsList"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TabContainer/Loja/ShopPanel/ItemsList/CopperPickaxeItem"]
+layout_mode = 2
+
+[node name="InfoContainer" type="VBoxContainer" parent="VBoxContainer/TabContainer/Loja/ShopPanel/ItemsList/CopperPickaxeItem/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ItemName" type="Label" parent="VBoxContainer/TabContainer/Loja/ShopPanel/ItemsList/CopperPickaxeItem/HBoxContainer/InfoContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Picareta de Cobre"
+
+[node name="Price" type="Label" parent="VBoxContainer/TabContainer/Loja/ShopPanel/ItemsList/CopperPickaxeItem/HBoxContainer/InfoContainer"]
+layout_mode = 2
+text = "Preço: 300 Moedas"
+
+[node name="BuyButton" type="Button" parent="VBoxContainer/TabContainer/Loja/ShopPanel/ItemsList/CopperPickaxeItem/HBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Comprar"
+
+[node name="Perfil" type="MarginContainer" parent="VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ProfilePanel" type="VBoxContainer" parent="VBoxContainer/TabContainer/Perfil"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="VBoxContainer/TabContainer/Perfil/ProfilePanel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Perfil do Jogador"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/TabContainer/Perfil/ProfilePanel"]
+layout_mode = 2
+
+[node name="StatsDisplay" type="GridContainer" parent="VBoxContainer/TabContainer/Perfil/ProfilePanel"]
+layout_mode = 2
+columns = 2
+
+[node name="Label1" type="Label" parent="VBoxContainer/TabContainer/Perfil/ProfilePanel/StatsDisplay"]
+layout_mode = 2
+text = "Nível:"
+
+[node name="LevelValue" type="Label" parent="VBoxContainer/TabContainer/Perfil/ProfilePanel/StatsDisplay"]
+layout_mode = 2
+text = "1"
+
+[node name="Label2" type="Label" parent="VBoxContainer/TabContainer/Perfil/ProfilePanel/StatsDisplay"]
+layout_mode = 2
+text = "Rank:"
+
+[node name="RankValue" type="Label" parent="VBoxContainer/TabContainer/Perfil/ProfilePanel/StatsDisplay"]
+layout_mode = 2
+text = "G"
+
+[node name="Label3" type="Label" parent="VBoxContainer/TabContainer/Perfil/ProfilePanel/StatsDisplay"]
+layout_mode = 2
+text = "Reputação:"
+
+[node name="ReputationValue" type="Label" parent="VBoxContainer/TabContainer/Perfil/ProfilePanel/StatsDisplay"]
+layout_mode = 2
+text = "0"
+
+[node name="Label4" type="Label" parent="VBoxContainer/TabContainer/Perfil/ProfilePanel/StatsDisplay"]
+layout_mode = 2
+text = "Moedas:"
+
+[node name="CoinsValue" type="Label" parent="VBoxContainer/TabContainer/Perfil/ProfilePanel/StatsDisplay"]
+layout_mode = 2
+text = "0"
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer/TabContainer/Perfil/ProfilePanel"]
+layout_mode = 2
+
+[node name="InventoryTitle" type="Label" parent="VBoxContainer/TabContainer/Perfil/ProfilePanel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Inventário"
+
+[node name="InventoryDisplay" type="VBoxContainer" parent="VBoxContainer/TabContainer/Perfil/ProfilePanel"]
+layout_mode = 2
+
+[node name="CopperLabel" type="Label" parent="VBoxContainer/TabContainer/Perfil/ProfilePanel/InventoryDisplay"]
+layout_mode = 2
+text = "Cobre: 0"
+
+[node name="TinLabel" type="Label" parent="VBoxContainer/TabContainer/Perfil/ProfilePanel/InventoryDisplay"]
+layout_mode = 2
+text = "Estanho: 0"
+
+[node name="BronzeLabel" type="Label" parent="VBoxContainer/TabContainer/Perfil/ProfilePanel/InventoryDisplay"]
+layout_mode = 2
+text = "Bronze: 0"
+
+[node name="RatMeatLabel" type="Label" parent="VBoxContainer/TabContainer/Perfil/ProfilePanel/InventoryDisplay"]
+layout_mode = 2
+text = "Carne de Rato: 0"
